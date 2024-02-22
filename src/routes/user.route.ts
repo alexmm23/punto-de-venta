@@ -14,8 +14,8 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res, next) => {
   try {
-    const categories = await service.findAll()
-    res.status(200).json(categories)
+    const users = await service.findAll()
+    res.status(200).json(users)
   } catch (error) {
     next(error)
   }
