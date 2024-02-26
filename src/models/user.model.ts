@@ -23,6 +23,16 @@ const Users = new Schema<User, UserModel>({
         type: String,
         required: true,
         trim: true
+    },
+    createdAt:{
+        type: Date,
+        required: true,
+        default: Date.now
+    },
+    updatedAt:{
+        type: Date,
+        required: true,
+        default: Date.now
     }
 })
 

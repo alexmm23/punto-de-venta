@@ -1,10 +1,12 @@
 import Users from '../models/user.model'
 import {User} from '../types/user.type'
 import boom from '@hapi/boom'
+import bcrypt from 'bcrypt'
 
 class UserService{
     async create(user: User){
-        const newUser = await Users.create(user).catch((error)=>{
+        const hashedPassword = await bcrypt.hash(user.password, 10)
+        const newUser = await Users.create({...user, password: hashedPassword}).catch((error)=>{
             console.log('Could not save user', error)
         })
         return newUser
@@ -17,6 +19,11 @@ class UserService{
             throw boom.notFound("Users not found")
         }
         return users
+    }
+    async findByEmail(email: string){
+        const user = await Users.findOne({email}).catch((error)=>{
+            console.log('Error while connecting to the DB', error)
+        })
     }
 }
 
