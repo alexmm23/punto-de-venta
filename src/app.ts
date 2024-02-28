@@ -7,7 +7,8 @@ import {
 } from './middlewares/error.handler'
 import routerApi from './routes'
 import { config } from './config/config'
-
+import passport from 'passport'
+import './utils/auth'
 const { mongoUri, port } = config
 
 const app = express()
@@ -18,6 +19,7 @@ const connectDB = () => {
 
 app.use(express.json())
 routerApi(app)
+app.use(passport.initialize())
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`)
