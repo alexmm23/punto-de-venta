@@ -12,9 +12,9 @@ const LocalStrategy = new Strategy(options, async (email, password, next) => {
     const user: User = await service.findByEmail(email)
     if (user) {
       const isMatch = await bcrypt.compare(password, user.password)
+      delete user.password
       if (isMatch) {
-        const { name, email, id } = user
-        next(null, { name, email, id })
+        next(null, user)
       } else {
         next(boom.unauthorized('User or password not valid'), false)
       }

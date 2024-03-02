@@ -12,6 +12,9 @@ class UserService {
     }).catch((error) => {
       console.log('Could not save user', error)
     })
+    if (!newUser) {
+      throw boom.badRequest('Could not create user')
+    }
     return newUser
   }
   async findAll() {
