@@ -12,11 +12,20 @@ const Products = new Schema<Product, ProductModel>({
     required: false,
     trim: true
   },
-  price: {
+  unitCost: {
     type: Number,
     required: true
   },
-  stock: {
+  unitPrice: {
+    type: Number,
+    required: true
+  },
+  measureUnit: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  quantity: {
     type: Number,
     required: true
   },
@@ -36,3 +45,4 @@ const Products = new Schema<Product, ProductModel>({
     required: true
   }
 })
+export default model('Product', Products)

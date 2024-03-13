@@ -5,8 +5,10 @@ export type Product = {
   id?: string
   name: string
   description?: string
-  price: number
-  stock: number
+  unitCost: number
+  unitPrice: number
+  measureUnit: string
+  quantity: number
   createdAt?: Date
   updatedAt?: Date
   category: string | Category
