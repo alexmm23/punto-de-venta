@@ -27,9 +27,9 @@ router.get('/name/:name', async (req, res, next) => {
     next(error)
   }
 })
-router.get('/category/:category', async (req, res, next) => {
+router.post('/findByCategory', async (req, res, next) => {
   try {
-    const { category } = req.params
+    const { category } = req.body
     const products = await service.findByCategory(category)
     res.status(200).json(products)
   } catch (error) {

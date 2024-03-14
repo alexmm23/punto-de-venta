@@ -1,13 +1,14 @@
 import Products from '../models/product.model'
 import { Product } from '../types/product.type'
 import { Category } from '../types/category.type'
+import Categories from '../models/category.model'
 import boom from '@hapi/boom'
 
 class ProductService {
   async create(product: Product) {
     const { category } = product
     delete product.category
-    const dbCategory = await Products.findOne({ name: category }).catch(
+    const dbCategory = await Categories.findOne({ name: category }).catch(
       (error) => {
         console.log('Error while connecting to the DB', error)
       }
@@ -32,7 +33,10 @@ class ProductService {
     if (!products) {
       throw boom.notFound('Products not found')
     }
-    return products
+    const productsWithCategory = products.map(async (product) => {
+      return product.populate({ path: 'category', strictPopulate: false })
+    })
+    return Promise.all(productsWithCategory)
   }
 
   async findByName(name: string) {
@@ -44,10 +48,21 @@ class ProductService {
     }
     return product
   }
+
   async findByCategory(category: string) {
-    const products = await Products.find({ category }).catch((error) => {
-      console.log('Error while connecting to the DB', error)
-    })
+    const dbCategory = await Categories.findOne({ name: category }).catch(
+      (error) => {
+        console.log('Error while connecting to the DB', error)
+      }
+    )
+    if (!dbCategory) {
+      throw boom.notFound('Category not found')
+    }
+    const products = await Products.find({ category: dbCategory._id }).catch(
+      (error) => {
+        console.log('Error while connecting to the DB', error)
+      }
+    )
     if (!products) {
       throw boom.notFound('Products not found')
     }
