@@ -1,0 +1,204 @@
+{
+	"info": {
+		"_postman_id": "efe87dbe-bb13-49ba-a52a-a2a772f0d60f",
+		"name": "API-proyecto-web-2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "28292670"
+	},
+	"item": [
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "All Categories",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWRlNmZhOTM1YmE4NWM1YmE1ZDM5OGUiLCJpYXQiOjE3MDkwODk1Njh9.o4-FOwHs_Rry0aGuac1p1768UxNF5njcsKsvqYys4c4"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3010/api/v1/categories"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Categories",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWRlNmZhOTM1YmE4NWM1YmE1ZDM5OGUiLCJpYXQiOjE3MDkwODk1Njh9.o4-FOwHs_Rry0aGuac1p1768UxNF5njcsKsvqYys4c4"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"embutidos\",\r\n    \"description\":\"salchichas y jamones\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3010/api/v1/categories"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "All users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWRlNmZhOTM1YmE4NWM1YmE1ZDM5OGUiLCJpYXQiOjE3MDkwODk1Njh9.o4-FOwHs_Rry0aGuac1p1768UxNF5njcsKsvqYys4c4"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3010/api/v1/users"
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"nuevo\",\r\n    \"lastName\": \"prueba\",\r\n    \"email\": \"prueba3@gmail.com\",\r\n    \"password\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3010/api/v1/users"
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Email",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWRlNmZhOTM1YmE4NWM1YmE1ZDM5OGUiLCJpYXQiOjE3MDkwODk1Njh9.o4-FOwHs_Rry0aGuac1p1768UxNF5njcsKsvqYys4c4"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3010/api/v1/users/correo@gmail.com"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Create Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWRlNmZhOTM1YmE4NWM1YmE1ZDM5OGUiLCJpYXQiOjE3MDkwODk1Njh9.o4-FOwHs_Rry0aGuac1p1768UxNF5njcsKsvqYys4c4"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"La costena frijoles\",\r\n    \"description\": \"Lata de frijoles\",\r\n    \"unitPrice\": 25,\r\n    \"unitCost\": 12,\r\n    \"measureUnit\": \"pcs\",\r\n    \"quantity\": 30,\r\n    \"category\": \"enlatados\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3010/api/v1/products"
+					},
+					"response": []
+				},
+				{
+					"name": "All Products",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWRlNmZhOTM1YmE4NWM1YmE1ZDM5OGUiLCJpYXQiOjE3MDkwODk1Njh9.o4-FOwHs_Rry0aGuac1p1768UxNF5njcsKsvqYys4c4"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3010/api/v1/products"
+					},
+					"response": []
+				},
+				{
+					"name": "Find By Name",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWRlNmZhOTM1YmE4NWM1YmE1ZDM5OGUiLCJpYXQiOjE3MDkwODk1Njh9.o4-FOwHs_Rry0aGuac1p1768UxNF5njcsKsvqYys4c4"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3010/api/v1/products/name/manzana"
+					},
+					"response": []
+				},
+				{
+					"name": "Find By Category",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiT1NXQUwgQVBJIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoidmlyZ2luaWExMWNhcm1lbkBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9tb2JpbGVwaG9uZSI6Ijk2NzEyMDQ4MzgiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3VzZXJkYXRhIjoiNDcwNDg5LjAwIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiIxMzU0NiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjQiLCJuYmYiOjE3MDgxMjE0NTIsImV4cCI6MTcwODEyNTA1MiwiaXNzIjoiaHR0cDovL2VtaXNzYXJ5YXBpLmF6dXJld2Vic2l0ZXMubmV0IiwiYXVkIjoiRW1pc3NhcnlYIn0.1ThLeC3AoSNOJbzqu3wPg9-DzTc_6yy_JB1WCFWNQrg"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"correo@gmail.com\",\r\n    \"password\": \"12345ll\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3010/api/v1/auth/login"
+			},
+			"response": []
+		}
+	]
+}
