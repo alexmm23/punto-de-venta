@@ -8,20 +8,20 @@ import {
 import routerApi from './routes'
 import { config } from './config/config'
 import passport from 'passport'
-import './utils/auth'
 import cors from 'cors'
+import './utils/auth'
 
 const { mongoUri, port } = config
 
 const app = express()
+app.use(express.json())
+app.use(cors())
 const connectDB = () => {
   mongoose.connect(mongoUri)
 }
 
-app.use(express.json())
-routerApi(app)
 app.use(passport.initialize())
-app.use(cors)
+routerApi(app)
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`)
