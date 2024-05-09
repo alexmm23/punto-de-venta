@@ -4,6 +4,18 @@ import CategoryService from '../services/category.service'
 import passport from 'passport'
 const router = express.Router()
 const service = new CategoryService()
+
+//Endpoint desprotegido
+
+router.get('/getNames', async (req, res, next) => {
+  try {
+    const categories = await service.findNames()
+    res.status(200).json(categories)
+  } catch (error) {
+    next(error)
+  }
+})
+
 router.use(passport.authenticate('jwt', { session: false }))
 
 router.post('/', async (req, res) => {

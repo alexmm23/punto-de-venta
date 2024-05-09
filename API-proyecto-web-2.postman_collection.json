@@ -47,6 +47,15 @@
 						"url": "http://localhost:3010/api/v1/categories"
 					},
 					"response": []
+				},
+				{
+					"name": "Category Names",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3010/api/v1/categories/getNames"
+					},
+					"response": []
 				}
 			]
 		},
@@ -125,7 +134,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"La costena frijoles\",\r\n    \"description\": \"Lata de frijoles\",\r\n    \"unitPrice\": 25,\r\n    \"unitCost\": 12,\r\n    \"measureUnit\": \"pcs\",\r\n    \"quantity\": 30,\r\n    \"category\": \"enlatados\"\r\n  }",
+							"raw": "{\r\n    \"name\": \"Chocokrispis\",\r\n    \"description\": \"Caja de Chocokrispis de 500 grs\",\r\n    \"unitPrice\": 50,\r\n    \"unitCost\": 35,\r\n    \"measureUnit\": \"pcs\",\r\n    \"quantity\": 30,\r\n    \"category\": \"cereales\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -138,6 +147,9 @@
 				},
 				{
 					"name": "All Products",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -147,6 +159,15 @@
 						},
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": "http://localhost:3010/api/v1/products"
 					},
 					"response": []
@@ -169,8 +190,24 @@
 				{
 					"name": "Find By Category",
 					"request": {
-						"method": "GET",
-						"header": []
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWRlNmZhOTM1YmE4NWM1YmE1ZDM5OGUiLCJpYXQiOjE3MDkwODk1Njh9.o4-FOwHs_Rry0aGuac1p1768UxNF5njcsKsvqYys4c4"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"category\": \"frutas y verduras\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3010/api/v1/products/findByCategory"
 					},
 					"response": []
 				}
