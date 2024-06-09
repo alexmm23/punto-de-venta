@@ -36,5 +36,24 @@ router.post('/findByCategory', async (req, res, next) => {
     next(error)
   }
 })
+router.put('/:id', async (req, res, next) => {
+  try {
+    const { id } = req.params
+    const product: Product = req.body
+    const updatedProduct = await service.update(id, product)
+    res.status(200).json(updatedProduct)
+  } catch (error) {
+    next(error)
+  }
+})
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const { id } = req.params
+    await service.delete(id)
+    res.status(204).end()
+  } catch (error) {
+    next(error)
+  }
+})
 
 export default router

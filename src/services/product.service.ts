@@ -68,5 +68,37 @@ class ProductService {
     }
     return products
   }
+  async update(id: string, product: Product) {
+    const { category } = product
+    delete product.category
+    const dbCategory = await Categories.findOne({ name: category }).catch(
+      (error) => {
+        console.log('Error while connecting to the DB', error)
+      }
+    )
+    if (!dbCategory) {
+      throw boom.notFound('Category not found')
+    }
+    const updatedProduct = await Products.findByIdAndUpdate(
+      id,
+      { ...product, category: dbCategory._id },
+      { new: true }
+    ).catch((error) => {
+      console.log('Error while connecting to the DB', error)
+    })
+    if (!updatedProduct) {
+      throw boom.notFound('Product not found')
+    }
+    return updatedProduct.populate({ path: 'category', strictPopulate: false })
+  }
+  async delete(id: string) {
+    const product = await Products.findByIdAndDelete(id).catch((error) => {
+      console.log('Error while connecting to the DB', error)
+    })
+    if (!product) {
+      throw boom.notFound('Product not found')
+    }
+    return product
+  }
 }
 export default ProductService
