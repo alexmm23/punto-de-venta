@@ -57,6 +57,29 @@ class CategoryService {
 
     return categories
   }
+  async update(id: string, category: Category) {
+    const updatedCategory = await Categories.findByIdAndUpdate(id, category, {
+      new: true
+    }).catch((error) => {
+      console.log('Error while connecting to the DB', error)
+    })
+
+    if (!updatedCategory) {
+      throw boom.notFound('Category not found')
+    }
+
+    return updatedCategory
+  }
+  async delete(id: string) {
+    const category = await Categories.findByIdAndDelete(id).catch((error) => {
+      console.log('Error while connecting to the DB', error)
+    })
+
+    if (!category) {
+      throw boom.notFound('Category not found')
+    }
+    return category
+  }
 }
 
 export default CategoryService
